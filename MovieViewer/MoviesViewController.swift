@@ -13,6 +13,9 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
 
     @IBOutlet weak var actInd: UIActivityIndicatorView!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var networkLabel: UILabel!
+    
+    
     var movies: [NSDictionary]?
     var refreshControl: UIRefreshControl!
     
@@ -37,10 +40,13 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
                     if let responseDictionary = try! NSJSONSerialization.JSONObjectWithData(
                         data, options:[]) as? NSDictionary {
                             NSLog("response: \(responseDictionary)")
-                            
                             self.movies = responseDictionary["results"] as! [NSDictionary]
                             self.tableView.reloadData()
                     }
+                }
+                else {
+                    // Here is when data is nil... potential network problem
+                    self.networkLabel.hidden = false
                 }
         });
         
