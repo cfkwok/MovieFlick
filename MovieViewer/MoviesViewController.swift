@@ -14,7 +14,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet weak var actInd: UIActivityIndicatorView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var networkLabel: UILabel!
-    
+    @IBOutlet weak var searchBar: UISearchBar!
     
     var movies: [NSDictionary]?
     var refreshControl: UIRefreshControl!
@@ -89,6 +89,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         
         
         print("row \(indexPath.row)")
+        
         return cell
     }
     
@@ -102,6 +103,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
             self.refreshControl.endRefreshing()
         })
     }
+    
     /*
     // MARK: - Navigation
 
